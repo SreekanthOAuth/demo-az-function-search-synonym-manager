@@ -16,11 +16,11 @@ using Newtonsoft.Json;
 
 namespace Demo.SearchSynonymManager
 {
-    public static class ProcessNewSynonymMapActivity
+    public static class PartSynonymMapActivity
     {
         private static readonly HttpClient _httpClient = new HttpClient();
 
-        [FunctionName("ProcessNewSynonymMapActivity")]
+        [FunctionName("PartSynonymMapActivity")]
         public static async Task Run([BlobTrigger("part-synonym-map/{name}", Connection = "BlobStorageConnectionString")]Stream myBlob, string name, ILogger log, ExecutionContext context)
         {
             log.LogInformation($"Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
