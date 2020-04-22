@@ -21,7 +21,7 @@ namespace Demo.SearchSynonymManager
         private static readonly HttpClient _httpClient = new HttpClient();
 
         [FunctionName("ProcessNewSynonymMapActivity")]
-        public static async Task Run([BlobTrigger("synonym-map/{name}", Connection = "BlobStorageConnectionString")]Stream myBlob, string name, ILogger log, ExecutionContext context)
+        public static async Task Run([BlobTrigger("part-synonym-map/{name}", Connection = "BlobStorageConnectionString")]Stream myBlob, string name, ILogger log, ExecutionContext context)
         {
             log.LogInformation($"Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 
@@ -51,7 +51,7 @@ namespace Demo.SearchSynonymManager
 
             var synonymMap = new SynonymMap()
             {
-                Name = "productnamemap",
+                Name = "partnamesynonymmap",
                 Synonyms = sb.ToString()
             };
 
